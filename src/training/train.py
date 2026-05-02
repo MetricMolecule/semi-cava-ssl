@@ -2,11 +2,14 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
+import matplotlib.pyplot as plt
+import os
 
 from src.models.cava_model import SemiCAVA
 from src.losses.elbo import elbo_labeled, elbo_unlabeled
 
 
+loss_history = []
 # -------------------------------
 # Mixup
 # -------------------------------
@@ -167,6 +170,22 @@ def train(
         # -----------------------
         if (epoch + 1) % 2 == 0:
             torch.save(model.state_dict(), f"{save_dir}/model_epoch_{epoch+1}.pth")
+        
+        loss_history.append(total_loss)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, epochs+1), loss_history, marker='o')
+    plt.xlabel('Epoch')
+    plt.ylabel('Total Loss')
+    plt.title('Training Loss Curve')
+    plt.grid(True)
+    result_dir = "results"
+    os.makedirs(result_dir, exist_ok=True)
+    save_path = os.path.join(result_dir, "loss_curve.png")
+    plt.savefig(save_path)
+    plt.close()
+    print(f"Saved loss curve to {save_path}")
+
 
 
 # -------------------------------
