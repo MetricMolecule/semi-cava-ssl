@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ```bash
 python src.training.train
-
+```
 ---
 
 ## 📷 Medical Dataset Samples
