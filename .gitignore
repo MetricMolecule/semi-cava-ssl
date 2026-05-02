@@ -15,3 +15,5 @@ results/
 *.pt
 
 data/
+
+.DS_Store
