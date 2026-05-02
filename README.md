@@ -46,6 +46,27 @@ Dataset: MNIST (converted to 3-channel)
 | Accuracy | ~65–80% |
 | Training epochs | 10 |
 
+| Epoch | Loss ↓ | Accuracy ↑ |
+|------|--------|------------|
+| 1 | ~32k | 0.09 |
+| 5 | ~16k | 0.27 |
+| 10 | ~12k | 0.55 |
+
+### Training Curve
+
+Loss decreases steadily over epochs, indicating stable convergence.
+
+![Loss Curve](results/loss_curve.png)
+
+---
+
+## 🧪 Evaluation
+
+Evaluate model on test data:
+
+```bash
+python -m src.training.eval
+```
 ---
 
 ## ⚙️ Installation
@@ -53,6 +74,9 @@ Dataset: MNIST (converted to 3-channel)
 ```bash
 git clone https://github.com/MetricMolecule/semi-cava-ssl.git
 cd semi-cava-ssl
+
 python3 -m venv .venv
 source .venv/bin/activate
+
 pip install -r requirements.txt
+```
