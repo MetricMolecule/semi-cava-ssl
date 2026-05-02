@@ -1,18 +1,11 @@
 import torch
 import torch.nn.functional as F
-import yaml
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 
 from src.models.cava_model import SemiCAVA
 from src.losses.elbo import elbo_labeled, elbo_unlabeled
 
-# -------------------------------
-# YAML Loader
-# -------------------------------
-def load_config(path="configs/default.yaml"):
-    with open(path, "r") as f:
-        return yaml.safe_load(f)
 
 # -------------------------------
 # Mixup
@@ -79,12 +72,20 @@ def train(
     num_labeled=1000,
     lambda_u=1.0,
     lambda_cons=5.0,
+    zc_dim=32,
+    znc_dim=32,
+    num_classes=10,
     save_dir="checkpoints",
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
 
-    model = SemiCAVA(zc_dim=32, znc_dim=32, num_classes=10).to(device)
+    model = SemiCAVA(
+        zc_dim=zc_dim,
+        znc_dim=znc_dim,
+        num_classes=num_classes
+    ).to(device)
+
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     labeled_loader, unlabeled_loader = get_dataloaders(batch_size, num_labeled)
@@ -172,5 +173,4 @@ def train(
 # Entry
 # -------------------------------
 if __name__ == "__main__":
-    config = load_config()
-    train(**config)
+    train()
