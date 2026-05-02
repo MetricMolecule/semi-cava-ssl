@@ -1,0 +1,10 @@
+import matplotlib.pyplot as plt
+
+def plot_loss(losses):
+    plt.plot(losses)
+    plt.title("Training Loss")
+    plt.xlabel("Iterations")
+    plt.ylabel("Loss")
+    plt.savefig("results/loss_curve.png")
+
+# manually paste losses for now OR extend later

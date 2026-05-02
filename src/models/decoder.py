@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
 class Decoder(nn.Module):
     def __init__(self, zc_dim, znc_dim, K):
@@ -18,7 +21,7 @@ class Decoder(nn.Module):
             nn.BatchNorm2d(64),
             nn.ReLU(True),
 
-            nn.Conv2d(64, 1, 3, 1, 1),
+            nn.Conv2d(64, 3, 3, 1, 1),
             nn.Tanh()
         )
 

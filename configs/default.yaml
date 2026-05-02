@@ -1,0 +1,14 @@
+epochs: 15
+batch_size: 64
+lr: 0.001
+
+num_labeled: 1000
+
+lambda_u: 1.0
+lambda_cons: 5.0
+
+zc_dim: 32
+znc_dim: 32
+num_classes: 10
+
+dataset: MNIST
