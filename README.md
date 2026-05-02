@@ -113,7 +113,9 @@ MIT License
 
 ## 📧 Contact
 
-Name: [Anshak]
-Email: [anshak001@gmail.com]
+GitHub: [MetricMolecule](https://github.com/MetricMolecule) \
+Email Address: [✉️](mailto:[anshak001@gmail.com])
+
+Feel free to reach out for any queries, suggestions, or collaborations. It would be a pleasure to hear from you.
 
 ---
